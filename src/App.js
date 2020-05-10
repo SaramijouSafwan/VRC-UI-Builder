@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Grid, makeStyles, Hidden } from "@material-ui/core";
+
+import ToolsSection from "./Sections/ToolsSection";
+import TabsSection from "./Sections/TabsSection";
+
+const useStyle = makeStyles((theme) => ({
+  root: {
+    minHeight: "100vh",
+    overflow: "hidden"
+  },
+  tool: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+}));
 
 function App() {
+  const classes = useStyle();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container className={classes.root}>
+      
+      <Hidden mdDown>
+        <Grid item xs={1} className={classes.tool}>
+          <ToolsSection />
+        </Grid>
+      </Hidden>
+
+      <Grid item xs={9}>
+        {
+          /**
+            Here Builder Cunvas -> React Fiber 
+          **/
+        }
+      </Grid>
+
+      <Hidden mdDown>
+        <Grid item xs={2}>
+          <TabsSection />
+        </Grid>
+      </Hidden>
+
+    </Grid>
   );
 }
 
